@@ -47,7 +47,7 @@ When the deployment completes,
 
 ### Amazon Bedrock foundational model
 
-This solution allows users to select which foundational model they want to use during the retrieval and generation phase. The default model is **Anthropic Claude Instant**. For the knowledge base embedding model, this solution uses **Amazon Titan Embeddings G1 - Text** model. Make sure you have [access to these foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html).
+This solution allows users to select which foundational model they want to use during the retrieval and generation phase. The default model is **Anthropic Claude**. For the knowledge base embedding model, this solution uses **Amazon Titan Embeddings** model.
 
 ### Upload content to S3 bucket
 

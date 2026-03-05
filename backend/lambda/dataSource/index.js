@@ -22,6 +22,9 @@ const createDataSource = async () => {
                 {
                   url: "https://www.aboutamazon.com/news/amazon-offices",
                 },
+                {
+                  url: "https://www.aboutamazon.com/news/amazon-offices/amazon-headquarters-tour-seattle",
+                },
               ],
             },
           },

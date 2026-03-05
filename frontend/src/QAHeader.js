@@ -65,9 +65,8 @@ export const QAHeader = (props) => {
       </Typography>
       <Alert severity="info">
         Make sure to check in your AWS console that you have access to the
-        selected model. Note: if no model is selected, the default model used
-        will be anthropic.claude-instant-v1. Check out the list of supported
-        models and regions{" "}
+        selected model. Note: if no model is selected, a default model is used.
+        Check out the list of supported models and regions{" "}
         <a
           href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-supported.html"
           target="_blank"
