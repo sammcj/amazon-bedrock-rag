@@ -33,7 +33,8 @@ export class BackendStack extends Stack {
       this,
       "knowledgeBase",
       {
-        embeddingsModel: bedrock.BedrockFoundationModel.TITAN_EMBED_TEXT_V1,
+        embeddingsModel: bedrock.BedrockFoundationModel.TITAN_EMBED_TEXT_V2_1024,
+        vectorType: bedrock.VectorType.BINARY,
       }
     );
 
@@ -76,7 +77,7 @@ export class BackendStack extends Stack {
       this,
       "CreateWebDataSourceHandler",
       {
-        runtime: Runtime.NODEJS_18_X,
+        runtime: Runtime.NODEJS_22_X,
         entry: join(__dirname, "../lambda/dataSource/index.js"),
         functionName: `create-web-data-source`,
         timeout: Duration.minutes(1),
@@ -107,7 +108,7 @@ export class BackendStack extends Stack {
     /** S3 Ingest Lambda for S3 data source */
 
     const lambdaIngestionJob = new NodejsFunction(this, "IngestionJob", {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       entry: join(__dirname, "../lambda/ingest/index.js"),
       functionName: `start-ingestion-trigger`,
       timeout: Duration.minutes(15),
@@ -130,7 +131,7 @@ export class BackendStack extends Stack {
     /** Web crawler ingest Lambda */
 
     const lambdaCrawlJob = new NodejsFunction(this, "CrawlJob", {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       entry: join(__dirname, "../lambda/crawl/index.js"),
       functionName: `start-web-crawl-trigger`,
       timeout: Duration.minutes(15),
@@ -157,7 +158,7 @@ export class BackendStack extends Stack {
     /** Lambda to update the list of seed urls in Web crawler data source*/
 
     const lambdaUpdateWebUrls = new NodejsFunction(this, "UpdateWebUrls", {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       entry: join(__dirname, "../lambda/webUrlSources/index.js"),
       functionName: `update-web-crawl-urls`,
       timeout: Duration.minutes(15),
@@ -179,7 +180,7 @@ export class BackendStack extends Stack {
     /** Lambda to get the list of seed urls in Web crawler data source*/
 
     const lambdaGetWebUrls = new NodejsFunction(this, "GetWebUrls", {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       entry: join(__dirname, "../lambda/getUrls/index.js"),
       functionName: `get-web-crawl-urls`,
       timeout: Duration.minutes(15),
@@ -221,7 +222,7 @@ export class BackendStack extends Stack {
     /** Lambda for handling retrieval and answer generation  */
 
     const lambdaQuery = new NodejsFunction(this, "Query", {
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       entry: join(__dirname, "../lambda/query/index.js"),
       functionName: `query-bedrock-llm`,
       //query lambda duration set to match API Gateway max timeout
